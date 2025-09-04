@@ -101,49 +101,13 @@
                 </div>
 
                 <!-- Previous Entries -->
-                <div class="previous-entries">
-                    <h3 class="entries-title">Previous Entries</h3>
-                    <div class="entries-list">
-                        <div class="entry-card">
-                            <div class="entry-header">
-                                <div class="entry-title-prev">Reflecting on Growth</div>
-                                <div class="entry-date-prev">Yesterday, 8:30 PM</div>
-                            </div>
-                            <div class="entry-preview">
-                                Today I realized how much I've grown over the past few months. The challenges I faced have made me stronger...
-                            </div>
-                            <div class="entry-mood">
-                                <span class="mood-indicator grateful">😊 Grateful</span>
-                            </div>
-                        </div>
+<div class="previous-entries">
+    <h3 class="entries-title">Previous Entries</h3>
+    <div class="entries-list">
+        <!-- Entries will be injected here by loadEntries() -->
+    </div>
+</div>
 
-                        <div class="entry-card">
-                            <div class="entry-header">
-                                <div class="entry-title-prev">Weekend Adventures</div>
-                                <div class="entry-date-prev">2 days ago, 6:15 PM</div>
-                            </div>
-                            <div class="entry-preview">
-                                Had an amazing weekend exploring the city with friends. We discovered a new café and spent hours just talking...
-                            </div>
-                            <div class="entry-mood">
-                                <span class="mood-indicator excited">🤩 Excited</span>
-                            </div>
-                        </div>
-
-                        <div class="entry-card">
-                            <div class="entry-header">
-                                <div class="entry-title-prev">Mindful Monday</div>
-                                <div class="entry-date-prev">5 days ago, 7:00 AM</div>
-                            </div>
-                            <div class="entry-preview">
-                                Started the week with meditation and goal setting. Feeling focused and ready to tackle new challenges...
-                            </div>
-                            <div class="entry-mood">
-                                <span class="mood-indicator peaceful">😌 Peaceful</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Journal Prompts -->
                 <div class="journal-prompts">
@@ -255,6 +219,68 @@
     </script>
 </body>
 </html>
+
+<script>
+  // Save a new journal entry
+  async function submitJournalEntry() {
+    const title = document.getElementById("journal-title").value;
+    const content = document.getElementById("journal-content").value;
+    const moodTag = document.querySelector(".mood-tag.selected");
+    const mood = moodTag ? moodTag.dataset.mood : "unspecified";
+
+    if (!content.trim()) {
+      alert("Please write something before saving.");
+      return;
+    }
+
+    await fetch("http://127.0.0.1:5000/add_entry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content, mood })
+    });
+
+    // reload past entries after saving
+    loadEntries();
+    
+    // clear form
+    document.getElementById("journal-title").value = "";
+    document.getElementById("journal-content").value = "";
+    document.querySelectorAll(".mood-tag").forEach(tag => tag.classList.remove("selected"));
+  }
+
+  // Load past entries
+  async function loadEntries() {
+    const res = await fetch("http://127.0.0.1:5000/get_entries");
+    const entries = await res.json();
+
+    const entriesList = document.querySelector(".entries-list");
+    entriesList.innerHTML = "";
+
+    if (entries.length === 0) {
+      entriesList.innerHTML = "<p>No past entries yet. Start journaling!</p>";
+      return;
+    }
+
+    entries.forEach(e => {
+      const card = document.createElement("div");
+      card.className = "entry-card";
+      card.innerHTML = `
+        <div class="entry-header">
+          <div class="entry-title-prev">${e.title}</div>
+          <div class="entry-date-prev">${e.timestamp}</div>
+        </div>
+        <div class="entry-preview">${e.content}</div>
+        <div class="entry-mood">
+          <span class="mood-indicator">${e.mood}</span>
+        </div>
+      `;
+      entriesList.appendChild(card);
+    });
+  }
+
+  // Load past entries on page load
+  document.addEventListener("DOMContentLoaded", loadEntries);
+</script>
 
 <script>
   async function loadEntries() {
