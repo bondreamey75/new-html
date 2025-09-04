@@ -130,28 +130,21 @@ function submitCheckin() {
 }
 
 // Journal entry submission
-function submitJournalEntry() {
-    const title = document.getElementById('journal-title')?.value;
-    const content = document.getElementById('journal-content')?.value;
-    
-    if (!title || title.trim().length === 0) {
-        showToast('Please add a title for your journal entry.', 'error');
-        return;
-    }
-    
-    if (!content || content.trim().length === 0) {
-        showToast('Please write some content for your journal entry.', 'error');
-        return;
-    }
-    
-    showToast('Journal entry saved successfully!');
-    
-    // Reset form
-    setTimeout(() => {
-        document.getElementById('journal-title').value = '';
-        document.getElementById('journal-content').value = '';
-    }, 1500);
+async function submitJournalEntry() {
+  const title = document.getElementById("journal-title").value;
+  const content = document.getElementById("journal-content").value;
+  const moodTag = document.querySelector(".mood-tag.selected");
+  const mood = moodTag ? moodTag.dataset.mood : "unspecified";
+
+  await fetch("http://127.0.0.1:5000/add_entry", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title, content, mood })
+  });
+
+  showToast("Entry saved successfully!");
 }
+
 
 // Chat functionality
 function sendMessage() {

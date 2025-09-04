@@ -255,3 +255,32 @@
     </script>
 </body>
 </html>
+
+<script>
+  async function loadEntries() {
+    const res = await fetch("http://127.0.0.1:5000/get_entries");
+    const entries = await res.json();
+
+    const entriesList = document.querySelector(".entries-list");
+    entriesList.innerHTML = "";
+    entries.forEach(e => {
+      const card = document.createElement("div");
+      card.className = "entry-card";
+      card.innerHTML = `
+        <div class="entry-header">
+          <div class="entry-title-prev">${e.title}</div>
+          <div class="entry-date-prev">${e.timestamp}</div>
+        </div>
+        <div class="entry-preview">${e.content}</div>
+        <div class="entry-mood">
+          <span class="mood-indicator">${e.mood}</span>
+        </div>
+      `;
+      entriesList.appendChild(card);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadEntries);
+</script>
+</body>
+</html>
