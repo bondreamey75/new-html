@@ -233,10 +233,15 @@ body {
 }
 
 /* Quote Section */
-.quote-section {
+  .daily-quote {
+  font-family: 'Georgia', serif;
+  font-size: 1.2em;
+  color: #444;
+  margin: 20px auto;
   text-align: center;
-  margin-bottom: 4rem;
+  max-width: 600px;
 }
+
 
 .quote-card {
   max-width: 800px;
