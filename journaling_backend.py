@@ -1,14 +1,14 @@
 from flask import Flask, request, jsonify
 import sqlite3
 from datetime import datetime
-from flask_cors import CORS   # allows your frontend to talk to backend if served separately
+from flask_cors import CORS   # allows frontend and backend communication
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS if frontend and backend are on different ports
 DB_NAME = "journal.db"
 
 
-# Initialize database
+# Initialize database with indexes
 def init_db():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
@@ -19,6 +19,11 @@ def init_db():
                     mood TEXT,
                     timestamp TEXT
                 )''')
+
+    # Add indexes for faster filtering
+    c.execute("CREATE INDEX IF NOT EXISTS idx_timestamp ON entries(timestamp)")
+    c.execute("CREATE INDEX IF NOT EXISTS idx_mood ON entries(mood)")
+
     conn.commit()
     conn.close()
 
@@ -43,9 +48,27 @@ def add_entry():
 
 @app.route("/get_entries", methods=["GET"])
 def get_entries():
+    mood = request.args.get("mood")
+    start_date = request.args.get("start_date")
+    end_date = request.args.get("end_date")
+
+    query = "SELECT id, title, content, mood, timestamp FROM entries WHERE 1=1"
+    params = []
+
+    if mood:
+        query += " AND mood = ?"
+        params.append(mood)
+
+    if start_date and end_date:
+        query += " AND timestamp BETWEEN ? AND ?"
+        params.append(start_date)
+        params.append(end_date)
+
+    query += " ORDER BY timestamp DESC"
+
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    c.execute("SELECT id, title, content, mood, timestamp FROM entries ORDER BY timestamp DESC")
+    c.execute(query, params)
     rows = c.fetchall()
     conn.close()
 
@@ -59,3 +82,4 @@ def get_entries():
 if __name__ == "__main__":
     init_db()
     app.run(debug=True)
+
