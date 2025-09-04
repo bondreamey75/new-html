@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="page-header">
+                <button class="back-button" onclick="goBack()">
+                    ← Back to Home
+                </button>
+            </div>
+
+            <div class="explore-container">
+                <div class="explore-header">
+                    <h1 class="page-title">
+                        <span class="gradient-text">Explore ✨</span>
+                    </h1>
+                    <p class="page-subtitle">Discover wellness resources, techniques, and activities to support your mental health journey</p>
+                </div>
+
+                <!-- Categories -->
+                <div class="categories-grid">
+                    <!-- Mindfulness & Meditation -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon meditation-icon">🧘‍♀️</div>
+                            <h3 class="category-title">Mindfulness & Meditation</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">🎵</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">5-Minute Breathing Exercise</div>
+                                    <div class="resource-description">Quick relaxation technique</div>
+                                </div>
+                                <div class="resource-duration">5 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🌊</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Ocean Sounds Meditation</div>
+                                    <div class="resource-description">Guided mindfulness session</div>
+                                </div>
+                                <div class="resource-duration">15 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🌸</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Body Scan Relaxation</div>
+                                    <div class="resource-description">Progressive muscle relaxation</div>
+                                </div>
+                                <div class="resource-duration">20 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Exercises -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon breathing-icon">💨</div>
+                            <h3 class="category-title">Breathing Exercises</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">🔢</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">4-7-8 Breathing</div>
+                                    <div class="resource-description">Calming breath pattern</div>
+                                </div>
+                                <div class="resource-duration">3 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">📦</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Box Breathing</div>
+                                    <div class="resource-description">Focus and stress relief</div>
+                                </div>
+                                <div class="resource-duration">5 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🌬️</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Coherent Breathing</div>
+                                    <div class="resource-description">Balance autonomic nervous system</div>
+                                </div>
+                                <div class="resource-duration">10 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Self-Care Activities -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon selfcare-icon">💆‍♀️</div>
+                            <h3 class="category-title">Self-Care Activities</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">📋</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Gratitude Practice</div>
+                                    <div class="resource-description">Daily appreciation exercise</div>
+                                </div>
+                                <div class="resource-duration">10 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🎨</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Creative Expression</div>
+                                    <div class="resource-description">Art therapy techniques</div>
+                                </div>
+                                <div class="resource-duration">30 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🚶‍♀️</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Mindful Walking</div>
+                                    <div class="resource-description">Moving meditation practice</div>
+                                </div>
+                                <div class="resource-duration">15 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stress Management -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon stress-icon">🛡️</div>
+                            <h3 class="category-title">Stress Management</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">💭</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Worry Time Technique</div>
+                                    <div class="resource-description">Structured anxiety management</div>
+                                </div>
+                                <div class="resource-duration">15 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🎯</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Priority Matrix</div>
+                                    <div class="resource-description">Organize tasks and reduce overwhelm</div>
+                                </div>
+                                <div class="resource-duration">10 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">⚡</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Quick Stress Relief</div>
+                                    <div class="resource-description">Emergency calming techniques</div>
+                                </div>
+                                <div class="resource-duration">2 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sleep & Rest -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon sleep-icon">😴</div>
+                            <h3 class="category-title">Sleep & Rest</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">🌙</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Bedtime Routine</div>
+                                    <div class="resource-description">Prepare your mind for sleep</div>
+                                </div>
+                                <div class="resource-duration">20 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">📖</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Sleep Story</div>
+                                    <div class="resource-description">Calming narrative for rest</div>
+                                </div>
+                                <div class="resource-duration">25 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🎼</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Sleep Sounds</div>
+                                    <div class="resource-description">Nature sounds for relaxation</div>
+                                </div>
+                                <div class="resource-duration">60 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emotional Wellness -->
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-icon emotional-icon">💝</div>
+                            <h3 class="category-title">Emotional Wellness</h3>
+                        </div>
+                        <div class="resources-list">
+                            <div class="resource-item">
+                                <div class="resource-icon">🪞</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Emotion Check-in</div>
+                                    <div class="resource-description">Identify and process feelings</div>
+                                </div>
+                                <div class="resource-duration">5 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">💪</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Building Resilience</div>
+                                    <div class="resource-description">Strengthen emotional recovery</div>
+                                </div>
+                                <div class="resource-duration">15 min</div>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon">🤝</div>
+                                <div class="resource-info">
+                                    <div class="resource-title">Self-Compassion</div>
+                                    <div class="resource-description">Practice kindness to yourself</div>
+                                </div>
+                                <div class="resource-duration">12 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Access Tools -->
+                <div class="quick-tools">
+                    <h2 class="tools-title">Quick Access Tools</h2>
+                    <div class="tools-grid">
+                        <button class="tool-button breathing-tool">
+                            <div class="tool-icon">💨</div>
+                            <span>Breathing Guide</span>
+                        </button>
+                        <button class="tool-button meditation-tool">
+                            <div class="tool-icon">🧘‍♀️</div>
+                            <span>5-Min Meditation</span>
+                        </button>
+                        <button class="tool-button gratitude-tool">
+                            <div class="tool-icon">🙏</div>
+                            <span>Gratitude Journal</span>
+                        </button>
+                        <button class="tool-button emergency-tool">
+                            <div class="tool-icon">🚨</div>
+                            <span>Crisis Support</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

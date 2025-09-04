@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna ChatBot - Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="page-header">
+                <button class="back-button" onclick="goBack()">
+                    ← Back to Home
+                </button>
+            </div>
+
+            <div class="chatbot-container">
+                <div class="chatbot-header">
+                    <div class="luna-avatar">🤖</div>
+                    <div class="luna-info">
+                        <h1 class="page-title">
+                            <span class="gradient-text">Luna ChatBot Assistant</span>
+                        </h1>
+                        <p class="page-subtitle">Your AI companion for emotional support and mental wellness guidance</p>
+                    </div>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span class="status-text">Online</span>
+                    </div>
+                </div>
+
+                <!-- Chat Interface -->
+                <div class="chat-interface">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Welcome Message -->
+                        <div class="message bot-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    Hello! I'm Luna, your AI companion for mental wellness. I'm here to listen, support, and guide you on your journey. 
+                                    How are you feeling today? What would you like to talk about?
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Suggestions -->
+                    <div class="quick-suggestions">
+                        <button class="suggestion-btn" onclick="sendQuickMessage('I\'m feeling anxious today')">
+                            I'm feeling anxious
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickMessage('I need help with stress')">
+                            Help with stress
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickMessage('I want to talk about my day')">
+                            Talk about my day
+                        </button>
+                        <button class="suggestion-btn" onclick="sendQuickMessage('I need motivation')">
+                            I need motivation
+                        </button>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-area">
+                        <div class="input-container">
+                            <input 
+                                type="text" 
+                                id="chat-input" 
+                                class="chat-input" 
+                                placeholder="Type your message here..."
+                                maxlength="500"
+                            >
+                            <button class="send-button" onclick="sendMessage()">
+                                <span class="send-icon">📤</span>
+                            </button>
+                        </div>
+                        <div class="input-info">
+                            <span class="privacy-note">🔒 Your conversations are private and secure</span>
+                            <span class="character-count">0/500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Helpful Resources -->
+                <div class="resources-section">
+                    <h3 class="resources-title">Helpful Resources</h3>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">🧘‍♀️</div>
+                            <div class="resource-text">
+                                <div class="resource-title">Guided Meditation</div>
+                                <div class="resource-desc">5-minute calming session</div>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">💨</div>
+                            <div class="resource-text">
+                                <div class="resource-title">Breathing Exercise</div>
+                                <div class="resource-desc">Quick stress relief</div>
+                            </div>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">📞</div>
+                            <div class="resource-text">
+                                <div class="resource-title">Crisis Support</div>
+                                <div class="resource-desc">Emergency helplines</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    <div class="disclaimer-icon">ℹ️</div>
+                    <div class="disclaimer-text">
+                        <strong>Important:</strong> Luna is an AI assistant designed to provide emotional support and wellness guidance. 
+                        If you're experiencing a mental health crisis, please contact a healthcare professional or emergency services immediately.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Character counter
+        const chatInput = document.getElementById('chat-input');
+        const characterCount = document.querySelector('.character-count');
+        
+        if (chatInput && characterCount) {
+            chatInput.addEventListener('input', () => {
+                const count = chatInput.value.length;
+                characterCount.textContent = `${count}/500`;
+                
+                if (count > 450) {
+                    characterCount.style.color = '#ef4444';
+                } else {
+                    characterCount.style.color = 'var(--muted-foreground)';
+                }
+            });
+        }
+        
+        // Quick message function
+        function sendQuickMessage(message) {
+            const input = document.getElementById('chat-input');
+            if (input) {
+                input.value = message;
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>

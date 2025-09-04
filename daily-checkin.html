@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Check-in - Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkin.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="page-header">
+                <button class="back-button" onclick="goBack()">
+                    ← Back to Home
+                </button>
+            </div>
+
+            <div class="checkin-container">
+                <div class="checkin-header">
+                    <h1 class="page-title">
+                        <span class="gradient-text">Daily Check-in</span>
+                    </h1>
+                    <p class="page-subtitle">Take a moment to reflect on your day and share how you're feeling</p>
+                </div>
+
+                <!-- Check-in Form -->
+                <div class="checkin-form">
+                    <div class="form-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="heart-icon">💜</span>
+                                How are you feeling today?
+                            </h2>
+                        </div>
+
+                        <div class="form-content">
+                            <!-- Mood Selection -->
+                            <div class="mood-section">
+                                <label class="section-label">Select your mood</label>
+                                <div class="mood-grid">
+                                    <button class="mood-option" id="great" onclick="selectMood('great')">
+                                        <div class="mood-icon great-mood">😊</div>
+                                        <span class="mood-label">Great</span>
+                                    </button>
+                                    <button class="mood-option" id="okay" onclick="selectMood('okay')">
+                                        <div class="mood-icon okay-mood">😐</div>
+                                        <span class="mood-label">Okay</span>
+                                    </button>
+                                    <button class="mood-option" id="struggling" onclick="selectMood('struggling')">
+                                        <div class="mood-icon struggling-mood">😔</div>
+                                        <span class="mood-label">Struggling</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Thoughts Section -->
+                            <div class="thoughts-section">
+                                <label for="thoughts" class="section-label tell-us-label">Tell us about your day</label>
+                                <textarea 
+                                    id="thoughts" 
+                                    class="thoughts-input"
+                                    placeholder="What's on your mind? Share your thoughts, feelings, or anything that happened today..."
+                                    rows="6"
+                                ></textarea>
+                                <p class="privacy-note">
+                                    Your thoughts are private and secure. Share as much or as little as you'd like.
+                                </p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button class="submit-button" onclick="submitCheckin()">
+                                <span class="submit-icon">📤</span>
+                                Submit Check-in
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Support Message -->
+                    <div class="support-card">
+                        <div class="support-content">
+                            <div class="support-icon">💜</div>
+                            <h3 class="support-title">You're not alone</h3>
+                            <p class="support-text">
+                                Every day is a new opportunity for growth and healing. Thank you for taking the time to check in with yourself.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

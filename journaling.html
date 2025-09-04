@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Journaling - Aura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="journaling.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="page-header">
+                <button class="back-button" onclick="goBack()">
+                    ← Back to Home
+                </button>
+            </div>
+
+            <div class="journaling-container">
+                <div class="journaling-header">
+                    <h1 class="page-title">
+                        <span class="gradient-text">Personal Journaling</span>
+                    </h1>
+                    <p class="page-subtitle">Express your thoughts and feelings freely in your private digital journal</p>
+                </div>
+
+                <!-- Journal Entry Form -->
+                <div class="journal-form">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <div class="journal-icon">📖</div>
+                            <div class="entry-info">
+                                <h2 class="form-title">New Journal Entry</h2>
+                                <div class="entry-date" id="current-date"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-content">
+                            <div class="title-section">
+                                <label for="journal-title" class="field-label">Entry Title</label>
+                                <input 
+                                    type="text" 
+                                    id="journal-title" 
+                                    class="title-input"
+                                    placeholder="What's on your mind today?"
+                                    maxlength="100"
+                                >
+                                <div class="title-counter">0/100</div>
+                            </div>
+
+                            <div class="content-section">
+                                <label for="journal-content" class="field-label">Your Thoughts</label>
+                                <textarea 
+                                    id="journal-content" 
+                                    class="content-textarea"
+                                    placeholder="Write freely about your day, feelings, thoughts, or anything that comes to mind. This is your safe space..."
+                                    rows="12"
+                                ></textarea>
+                                <div class="content-info">
+                                    <span class="privacy-note">🔒 Your journal entries are completely private</span>
+                                    <span class="word-count">0 words</span>
+                                </div>
+                            </div>
+
+                            <div class="mood-tag-section">
+                                <label class="field-label">How are you feeling?</label>
+                                <div class="mood-tags">
+                                    <button class="mood-tag" data-mood="grateful">😊 Grateful</button>
+                                    <button class="mood-tag" data-mood="peaceful">😌 Peaceful</button>
+                                    <button class="mood-tag" data-mood="excited">🤩 Excited</button>
+                                    <button class="mood-tag" data-mood="thoughtful">🤔 Thoughtful</button>
+                                    <button class="mood-tag" data-mood="sad">😢 Sad</button>
+                                    <button class="mood-tag" data-mood="anxious">😰 Anxious</button>
+                                    <button class="mood-tag" data-mood="angry">😠 Angry</button>
+                                    <button class="mood-tag" data-mood="confused">😕 Confused</button>
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="save-button" onclick="submitJournalEntry()">
+                                    <span class="save-icon">💾</span>
+                                    Save Entry
+                                </button>
+                                <button class="draft-button" onclick="saveDraft()">
+                                    <span class="draft-icon">📝</span>
+                                    Save as Draft
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Previous Entries -->
+                <div class="previous-entries">
+                    <h3 class="entries-title">Previous Entries</h3>
+                    <div class="entries-list">
+                        <div class="entry-card">
+                            <div class="entry-header">
+                                <div class="entry-title-prev">Reflecting on Growth</div>
+                                <div class="entry-date-prev">Yesterday, 8:30 PM</div>
+                            </div>
+                            <div class="entry-preview">
+                                Today I realized how much I've grown over the past few months. The challenges I faced have made me stronger...
+                            </div>
+                            <div class="entry-mood">
+                                <span class="mood-indicator grateful">😊 Grateful</span>
+                            </div>
+                        </div>
+
+                        <div class="entry-card">
+                            <div class="entry-header">
+                                <div class="entry-title-prev">Weekend Adventures</div>
+                                <div class="entry-date-prev">2 days ago, 6:15 PM</div>
+                            </div>
+                            <div class="entry-preview">
+                                Had an amazing weekend exploring the city with friends. We discovered a new café and spent hours just talking...
+                            </div>
+                            <div class="entry-mood">
+                                <span class="mood-indicator excited">🤩 Excited</span>
+                            </div>
+                        </div>
+
+                        <div class="entry-card">
+                            <div class="entry-header">
+                                <div class="entry-title-prev">Mindful Monday</div>
+                                <div class="entry-date-prev">5 days ago, 7:00 AM</div>
+                            </div>
+                            <div class="entry-preview">
+                                Started the week with meditation and goal setting. Feeling focused and ready to tackle new challenges...
+                            </div>
+                            <div class="entry-mood">
+                                <span class="mood-indicator peaceful">😌 Peaceful</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Journal Prompts -->
+                <div class="journal-prompts">
+                    <h3 class="prompts-title">Writing Prompts</h3>
+                    <p class="prompts-subtitle">Need inspiration? Try one of these thoughtful prompts:</p>
+                    <div class="prompts-grid">
+                        <div class="prompt-card" onclick="usePrompt('What am I most grateful for today?')">
+                            <div class="prompt-icon">🙏</div>
+                            <div class="prompt-text">What am I most grateful for today?</div>
+                        </div>
+                        <div class="prompt-card" onclick="usePrompt('How did I grow or learn something new recently?')">
+                            <div class="prompt-icon">🌱</div>
+                            <div class="prompt-text">How did I grow or learn something new recently?</div>
+                        </div>
+                        <div class="prompt-card" onclick="usePrompt('What challenge am I facing and how can I approach it?')">
+                            <div class="prompt-icon">💪</div>
+                            <div class="prompt-text">What challenge am I facing and how can I approach it?</div>
+                        </div>
+                        <div class="prompt-card" onclick="usePrompt('What made me smile today?')">
+                            <div class="prompt-icon">😊</div>
+                            <div class="prompt-text">What made me smile today?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Set current date
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateElement = document.getElementById('current-date');
+            if (dateElement) {
+                const now = new Date();
+                const options = { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                dateElement.textContent = now.toLocaleDateString('en-US', options);
+            }
+        });
+
+        // Character counters
+        const titleInput = document.getElementById('journal-title');
+        const titleCounter = document.querySelector('.title-counter');
+        const contentTextarea = document.getElementById('journal-content');
+        const wordCount = document.querySelector('.word-count');
+
+        if (titleInput && titleCounter) {
+            titleInput.addEventListener('input', () => {
+                const count = titleInput.value.length;
+                titleCounter.textContent = `${count}/100`;
+                if (count > 80) {
+                    titleCounter.style.color = '#ef4444';
+                } else {
+                    titleCounter.style.color = 'var(--muted-foreground)';
+                }
+            });
+        }
+
+        if (contentTextarea && wordCount) {
+            contentTextarea.addEventListener('input', () => {
+                const words = contentTextarea.value.trim().split(/\s+/).filter(word => word.length > 0);
+                wordCount.textContent = `${words.length} words`;
+            });
+        }
+
+        // Mood tag selection
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('mood-tag')) {
+                document.querySelectorAll('.mood-tag').forEach(tag => {
+                    tag.classList.remove('selected');
+                });
+                e.target.classList.add('selected');
+            }
+        });
+
+        // Use prompt function
+        function usePrompt(promptText) {
+            const titleInput = document.getElementById('journal-title');
+            const contentTextarea = document.getElementById('journal-content');
+            
+            if (titleInput && contentTextarea) {
+                titleInput.value = promptText;
+                contentTextarea.value = promptText + '\n\n';
+                contentTextarea.focus();
+                
+                // Trigger input events to update counters
+                titleInput.dispatchEvent(new Event('input'));
+                contentTextarea.dispatchEvent(new Event('input'));
+            }
+        }
+
+        // Save draft function
+        function saveDraft() {
+            showToast('Draft saved successfully!');
+        }
+    </script>
+</body>
+</html>

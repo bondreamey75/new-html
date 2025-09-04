@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura - Mental Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="main-title">
+                    <span class="gradient-text">Welcome to Aura</span>
+                </h1>
+                <p class="subtitle">Your companion for mental wellness and emotional support</p>
+            </div>
+
+            <!-- Navigation Cards -->
+            <div class="navigation-grid">
+                <!-- Know Your Data Card -->
+                <div class="navigation-card" onclick="navigateTo('data-insights.html')">
+                    <div class="card-content">
+                        <div class="card-icon data-icon">📊</div>
+                        <div class="card-text">
+                            <h2 class="card-title">Know Your Data</h2>
+                            <p class="card-description">Explore insights and trends</p>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Tell Us About Your Day Card -->
+                <div class="navigation-card" onclick="navigateTo('daily-checkin.html')">
+                    <div class="card-content">
+                        <div class="card-icon checkin-icon">💜</div>
+                        <div class="card-text">
+                            <h2 class="card-title">Tell Us About Your Day</h2>
+                            <p class="card-description">Share your thoughts and feelings</p>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Explore Card -->
+                <div class="navigation-card" onclick="navigateTo('explore.html')">
+                    <div class="card-content">
+                        <div class="card-icon explore-icon">✨</div>
+                        <div class="card-text">
+                            <h2 class="card-title">Explore ✨</h2>
+                            <p class="card-description">Discover wellness resources and techniques</p>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Luna ChatBot Card -->
+                <div class="navigation-card" onclick="navigateTo('luna-chatbot.html')">
+                    <div class="card-content">
+                        <div class="card-icon luna-icon">🤖</div>
+                        <div class="card-text">
+                            <h2 class="card-title">Luna ChatBot Assistant</h2>
+                            <p class="card-description">AI-powered emotional support</p>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+
+                <!-- Journaling Card -->
+                <div class="navigation-card" onclick="navigateTo('journaling.html')">
+                    <div class="card-content">
+                        <div class="card-icon journal-icon">📖</div>
+                        <div class="card-text">
+                            <h2 class="card-title">Personal Journaling</h2>
+                            <p class="card-description">Express your thoughts and feelings freely</p>
+                        </div>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </div>
+            </div>
+
+            <!-- Inspirational Quote -->
+            <div class="quote-section">
+                <div class="quote-card">
+                    <p class="quote-text">"Every emotion you feel is valid. I'm here to listen without judgement."</p>
+                    <div class="quote-divider"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="privacy-text">Your privacy is our priority. All conversations are encrypted and secure.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <span class="link-separator">•</span>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <span class="link-separator">•</span>
+                    <a href="#" class="footer-link">Support</a>
+                </div>
+                <p class="creators-text">
+                    Created by Vedant Gophane, Arya Yadav, Kaivalya Lehekar, Chirashree Bapuli and Amey Bondre
+                </p>
+            </footer>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
